@@ -1,0 +1,26 @@
+AppBundle\Entity\Tag:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TagRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        label:
+            type: string
+            length: '32'
+            unique: true
+        description:
+            type: string
+            length: '255'
+            nullable: true
+
+    manyToMany:
+        streams:
+            targetEntity: Stream
+            mappedBy: tags
+
+    lifecycleCallbacks: {  }

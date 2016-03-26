@@ -1,3 +1,16 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+stream_index:
+    path:      /streams
+    defaults:  { _controller: AppBundle:Stream:index }
+
+stream_show:
+    path: /stream/{id}
+    defaults:  { _controller: AppBundle:Stream:show }
+
+stream_create:
+    path:      /stream
+#    method: post
+    defaults:  { _controller: AppBundle:Stream:create }
