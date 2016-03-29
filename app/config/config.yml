@@ -68,3 +68,21 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        photo_image:
+            uri_prefix:         /photos/
+            upload_destination: %kernel.root_dir%/../web/upload/photos
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true

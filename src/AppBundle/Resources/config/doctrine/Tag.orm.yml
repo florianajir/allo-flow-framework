@@ -9,7 +9,7 @@ AppBundle\Entity\Tag:
             generator:
                 strategy: AUTO
     fields:
-        label:
+        name:
             type: string
             length: '32'
             unique: true
@@ -21,6 +21,9 @@ AppBundle\Entity\Tag:
     manyToMany:
         streams:
             targetEntity: Stream
+            mappedBy: tags
+        photos:
+            targetEntity: Photo
             mappedBy: tags
 
     lifecycleCallbacks: {  }

@@ -1,0 +1,11 @@
+<div class="photo form">
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-12">
+            {{ include('form/tag.html.twig', {'classname': 'photo', 'form': form.tags}) }}
+            {{ form_widget(form.tags) }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary pull-right">{{ 'photo.publish'|trans({}, 'photo') }}</button>
+    {{ form_end(form) }}
+</div>

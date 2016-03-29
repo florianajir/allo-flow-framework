@@ -1,7 +1,7 @@
-AppBundle\Entity\Stream:
+AppBundle\Entity\Photo:
     type: entity
-    table: streams
-    repositoryClass: AppBundle\Repository\StreamRepository
+    table: photos
+    repositoryClass: AppBundle\Repository\PhotoRepository
     id:
         id:
             type: integer
@@ -9,7 +9,16 @@ AppBundle\Entity\Stream:
             generator:
                 strategy: AUTO
     fields:
-        content:
+        title:
+            type: string
+            length: '255'
+
+        imageName:
+            type: string
+            column: image_name
+            length: '255'
+
+        description:
             type: string
             length: '255'
 
@@ -21,11 +30,11 @@ AppBundle\Entity\Stream:
         tags:
             targetEntity: Tag
             cascade: [persist]
-            inversedBy: streams
+            inversedBy: photos
             joinTable:
-                name: streams_tags
+                name: photos_tags
                 joinColumns:
-                    stream_id:
+                    photo_id:
                         referencedColumnName: id
             inverseJoinColumns:
                 tag_id:

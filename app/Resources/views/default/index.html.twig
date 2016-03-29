@@ -3,13 +3,22 @@
 {% block body %}
     <div id="wrapper">
         <div class="container">
-            <div id="welcome">
-                <h1>Welcome to AlloFlow</h1>
-            </div>
-            {{ include('stream/new.html.twig') }}
+            {{ include('default/share.html.twig') }}
         </div>
         <div class="container">
             {{ include('stream/index.html.twig') }}
         </div>
     </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-tokenfield.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/tokenfield-typeahead.min.css') }}"/>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    {#<script src="{{ asset('js/tags.js') }}"></script>#}
+    <script src="{{ asset('js/bootstrap-tokenfield.min.js') }}"></script>
 {% endblock %}

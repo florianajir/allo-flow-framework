@@ -79,6 +79,9 @@
     box-sizing: border-box;
     border-collapse: separate;
     display: table;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .form footer > * {
@@ -90,14 +93,9 @@
 }
 
 .form footer button {
-    background-color: #5b9dd9;
-    border: 0;
-    color: #ffffff;
-    font-size: 1em;
-    margin: 0 0 0.5em 0.5em;
-    padding: 0.5em 1em;
+    /*background-color: #5b9dd9;*/
+    /*color: #ffffff;*/
 }
-
 
 .form {
     max-width: 640px;

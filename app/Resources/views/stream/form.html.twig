@@ -1,0 +1,16 @@
+<div class="stream form">
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_label(form.content, null, {'label_attr': {'class': 'sr-only'}}) }}
+            {{ form_widget(form.content) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ include('form/tag.html.twig', {'classname': 'stream', 'form': form.tags}) }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary pull-right">{{ 'stream.publish'|trans({}, 'stream') }}</button>
+    {{ form_end(form) }}
+</div>

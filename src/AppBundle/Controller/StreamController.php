@@ -42,22 +42,23 @@ class StreamController extends Controller
      */
     public function newAction(Request $request)
     {
-        $response = $this->render('stream/new.html.twig');
         $stream = new Stream();
         $form = $this->createForm(StreamType::class, $stream);
         $form->handleRequest($request);
-
+//        var_dump($form);
+//        $response = $this->render('stream/new.html.twig', array('form' => $form->createView()));
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($stream);
             $em->flush();
-
-            $response = $this->redirect($this->generateUrl(
-                'stream_show',
-                array('id' => $stream->getId())
-            ));
+            $referer = $request->headers->get('referer');
+            $response = $this->redirect($referer);
+            $this->get('session')->getFlashBag()->add('success', 'Stream posted');
+        } else {
+//            $this->get('session')->
+            $response = $this->redirect($this->generateUrl('homepage'));
         }
-        
+
         return $response;
     }
 }

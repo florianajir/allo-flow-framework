@@ -16,7 +16,7 @@ class Tag
     /**
      * @var string
      */
-    private $label;
+    private $name;
 
     /**
      * @var string
@@ -27,6 +27,11 @@ class Tag
      * @var ArrayCollection
      */
     private $streams;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $photos;
 
     public function __construct()
     {
@@ -44,27 +49,27 @@ class Tag
     }
 
     /**
-     * Set label
+     * Set name
      *
-     * @param string $label
+     * @param string $name
      *
      * @return self
      */
-    public function setLabel($label)
+    public function setName($name)
     {
-        $this->label = $label;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get label
+     * Get name
      *
      * @return string
      */
-    public function getLabel()
+    public function getName()
     {
-        return $this->label;
+        return $this->name;
     }
 
     /**
@@ -119,6 +124,38 @@ class Tag
     public function addStream(Stream $stream)
     {
         $this->streams[] = $stream;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
+    }
+
+    /**
+     * @param ArrayCollection $photos
+     *
+     * @return self
+     */
+    public function setPhotos($photos)
+    {
+        $this->photos = $photos;
+
+        return $this;
+    }
+
+    /**
+     * @param Photo $photo
+     *
+     * @return self
+     */
+    public function addPhoto(Photo $photo)
+    {
+        $this->photos[] = $photo;
 
         return $this;
     }

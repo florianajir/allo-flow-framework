@@ -1,4 +1,4 @@
 stream:
     list: Streams list
     show: Show stream
-    new: New stream
+    publish: Publish

@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -8,6 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Stream
 {
+    use TageableTrait;
+    
     /**
      * @var int
      */
@@ -23,11 +26,6 @@ class Stream
      */
     private $publishedAt;
 
-    /**
-     * @var ArrayCollection
-     */
-    private $tags;
-
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -41,39 +39,6 @@ class Stream
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param ArrayCollection $tags
-     *
-     * @return self
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
-     * @param Tag $tag
-     *
-     * @return self
-     */
-    public function addTag(Tag $tag)
-    {
-        $tag->addStream($this); // synchronously updating inverse side
-        $this->tags[] = $tag;
-
-        return $this;
     }
 
     /**
@@ -117,7 +82,7 @@ class Stream
     }
 
     /**
-     * 
+     *
      */
     public function initPublishedAtValue()
     {
