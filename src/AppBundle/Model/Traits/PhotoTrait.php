@@ -44,6 +44,11 @@ trait PhotoTrait
         return $this;
     }
 
+    /**
+     * @param Photo $photo
+     *
+     * @return self
+     */
     public function removePhoto(Photo $photo)
     {
         $this->photos->removeElement($photo);

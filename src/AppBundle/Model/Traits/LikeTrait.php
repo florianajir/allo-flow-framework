@@ -50,5 +50,4 @@ trait LikeTrait
 
         return $this;
     }
-
 }
