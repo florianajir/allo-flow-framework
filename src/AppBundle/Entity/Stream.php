@@ -2,34 +2,22 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Model\Ressource;
 
 /**
  * Stream
  */
-class Stream
+class Stream extends Ressource
 {
-    use TageableTrait;
-    
     /**
      * @var int
      */
     private $id;
 
     /**
-     * @var string
+     * @var User
      */
-    private $content;
-
-    /**
-     * @var \DateTime
-     */
-    private $publishedAt;
-
-    public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
+    private $user;
 
     /**
      * Get id
@@ -42,51 +30,22 @@ class Stream
     }
 
     /**
-     * @return string
+     * @return User
      */
-    public function getContent()
+    public function getUser()
     {
-        return $this->content;
+        return $this->user;
     }
 
     /**
-     * @param string $content
+     * @param User $user
      *
      * @return self
      */
-    public function setContent($content)
+    public function setUser($user)
     {
-        $this->content = $content;
+        $this->user = $user;
 
         return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * @param \DateTime $publishedAt
-     *
-     * @return self
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     *
-     */
-    public function initPublishedAtValue()
-    {
-        $this->publishedAt = new \DateTime();
     }
 }
-

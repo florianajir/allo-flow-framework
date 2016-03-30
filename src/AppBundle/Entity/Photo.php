@@ -2,15 +2,26 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Mode\Traits\CreatedAtTrait;
+use AppBundle\Mode\Traits\DescriptionTrait;
+use AppBundle\Mode\Traits\LikeTrait;
+use AppBundle\Mode\Traits\NameTrait;
+use AppBundle\Mode\Traits\TagTrait;
+use AppBundle\Mode\Traits\UpdatedAtTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
- * Photo
+ * Photo: file uploaded by user
  */
 class Photo
 {
-    use TageableTrait;
+    use CreatedAtTrait;
+    use DescriptionTrait;
+    use LikeTrait;
+    use NameTrait;
+    use TagTrait;
+    use UpdatedAtTrait;
 
     /**
      * @var int
@@ -18,14 +29,9 @@ class Photo
     private $id;
 
     /**
-     * @var string
+     * @var User
      */
-    private $title;
-
-    /**
-     * @var string
-     */
-    private $description;
+    private $user;
 
     /**
      * @var File
@@ -42,9 +48,21 @@ class Photo
      */
     private $publishedAt;
 
+    /**
+     * @var Artist[]|ArrayCollection
+     */
+    private $artists;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
     public function __construct()
     {
+        $this->likes = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->updatedAt = new \DateTime('now');
     }
 
     /**
@@ -55,46 +73,6 @@ class Photo
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
     }
 
     /**
@@ -158,6 +136,50 @@ class Photo
     }
 
     /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Artist[]|ArrayCollection
+     */
+    public function getArtists()
+    {
+        return $this->artists;
+    }
+
+    /**
+     * @param Artist[]|ArrayCollection $artists
+     */
+    public function setArtists($artists)
+    {
+        $this->artists = $artists;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
      * @param \DateTime $publishedAt
      *
      * @return self
@@ -170,7 +192,7 @@ class Photo
     }
 
     /**
-     * 
+     * init published date
      */
     public function initPublishedAtValue()
     {
