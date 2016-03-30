@@ -1,15 +1,22 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Mode\Traits;
 
+use AppBundle\Entity\Artist;
+use AppBundle\Entity\Event;
+use AppBundle\Entity\Photo;
+use AppBundle\Entity\Stream;
+use AppBundle\Entity\Tag;
 use Doctrine\Common\Collections\ArrayCollection;
 
-trait TageableTrait
+trait TagTrait
 {
+    use LikeTrait;
+
     /**
      * @var ArrayCollection
      */
-    private $tags;
+    protected $tags;
 
     /**
      * @param ArrayCollection $tags
@@ -42,17 +49,25 @@ trait TageableTrait
             $tag->addStream($this); // synchronously updating inverse side
         } elseif ($this instanceof Photo) {
             $tag->addPhoto($this);
+        } elseif ($this instanceof Event) {
+            $tag->addEvent($this);
+        } elseif ($this instanceof Artist) {
+            $tag->addArtist($this);
         }
-        $this->tags[] = $tag;
+        $this->tags->add($tag);
 
         return $this;
     }
 
+    /**
+     * @param Tag $tag
+     *
+     * @return self
+     */
     public function removeTag(Tag $tag)
     {
         $this->tags->removeElement($tag);
 
         return $this;
     }
-
 }
