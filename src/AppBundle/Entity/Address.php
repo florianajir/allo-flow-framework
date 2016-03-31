@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Model\Ressource;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * 
@@ -33,6 +34,11 @@ class Address extends Ressource
      * @var float
      */
     private $longitude;
+
+    /**
+     * @var Artist[]|ArrayCollection
+     */
+    private $artists;
 
     /**
      * @return int
@@ -131,6 +137,37 @@ class Address extends Ressource
     {
         $this->longitude = $longitude;
         
+        return $this;
+    }
+
+    /**
+     * @return Artist[]|ArrayCollection
+     */
+    public function getArtists()
+    {
+        return $this->artists;
+    }
+
+    /**
+     * @param Artist $artist
+     *
+     * @return self
+     */
+    public function addArtist(Artist $artist)
+    {
+        $this->artists->add($artist);
+
+        return $this;
+    }
+    /**
+     * @param Artist $artist
+     *
+     * @return self
+     */
+    public function removeArtist(Artist $artist)
+    {
+        $this->artists->removeElement($artist);
+
         return $this;
     }
 }

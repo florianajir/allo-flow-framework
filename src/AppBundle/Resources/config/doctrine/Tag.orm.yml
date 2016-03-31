@@ -13,10 +13,6 @@ AppBundle\Entity\Tag:
             type: string
             length: '32'
             unique: true
-        description:
-            type: string
-            length: '255'
-            nullable: true
 
     manyToMany:
         streams:
@@ -26,4 +22,5 @@ AppBundle\Entity\Tag:
             targetEntity: Photo
             mappedBy: tags
 
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [initCreatedAt]

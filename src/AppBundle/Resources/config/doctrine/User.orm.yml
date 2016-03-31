@@ -7,8 +7,18 @@ AppBundle\Entity\User:
             generator:
                 strategy: AUTO
 
-    fields:
+#    fields:
 #        name:
 #            type: string
 #            length: '32'
 #            unique: true
+#
+#  oneToMany:
+#      streams:
+#          targetEntity: Stream
+#          mappedBy: user
+#
+#  oneToMany:
+#      photos:
+#          targetEntity: Photo
+#          mappedBy: user

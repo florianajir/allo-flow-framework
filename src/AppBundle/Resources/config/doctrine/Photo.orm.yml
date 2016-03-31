@@ -9,7 +9,7 @@ AppBundle\Entity\Photo:
             generator:
                 strategy: AUTO
     fields:
-        title:
+        name:
             type: string
             length: '255'
 
@@ -22,7 +22,7 @@ AppBundle\Entity\Photo:
             type: string
             length: '255'
 
-        publishedAt:
+        createdAt:
             type: datetime
             column: published_at
 
@@ -39,6 +39,18 @@ AppBundle\Entity\Photo:
             inverseJoinColumns:
                 tag_id:
                     referencedColumnName: id
+        artists:
+            targetEntity: Artist
+            cascade: [persist]
+            inversedBy: photos
+            joinTable:
+                name: photos_artists
+                joinColumns:
+                    photo_id:
+                        referencedColumnName: id
+            inverseJoinColumns:
+                artist_id:
+                    referencedColumnName: id
 
     lifecycleCallbacks:
-        prePersist: [initPublishedAtValue]
+        prePersist: [initCreatedAt]

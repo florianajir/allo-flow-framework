@@ -14,7 +14,7 @@ class StreamRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT s FROM AppBundle:Stream s ORDER BY s.publishedAt DESC'
+                'SELECT s FROM AppBundle:Stream s ORDER BY s.createdAt DESC'
             )
             ->getResult();
     }

@@ -9,13 +9,23 @@ AppBundle\Entity\Stream:
             generator:
                 strategy: AUTO
     fields:
-        content:
+        name:
             type: string
             length: '255'
+        description:
+            type: string
 
-        publishedAt:
+        createdAt:
             type: datetime
-            column: published_at
+            column: created_at
+
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: streams
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
 
     manyToMany:
         tags:
@@ -32,4 +42,4 @@ AppBundle\Entity\Stream:
                     referencedColumnName: id
 
     lifecycleCallbacks:
-        prePersist: [initPublishedAtValue]
+        prePersist: [initCreatedAt]

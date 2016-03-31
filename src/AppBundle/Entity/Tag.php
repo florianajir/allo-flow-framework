@@ -1,9 +1,9 @@
 <?php
 
 namespace AppBundle\Entity;
-use AppBundle\Mode\Traits\CreatedAtTrait;
-use AppBundle\Mode\Traits\LikeTrait;
-use AppBundle\Mode\Traits\NameTrait;
+use AppBundle\Model\Traits\CreatedAtTrait;
+use AppBundle\Model\Traits\LikeTrait;
+use AppBundle\Model\Traits\NameTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -13,7 +13,6 @@ class Tag
 {
     use CreatedAtTrait;
     use NameTrait;
-    use LikeTrait;
 
     /**
      * @var int
@@ -46,7 +45,6 @@ class Tag
         $this->photos = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->artists = new ArrayCollection();
-        $this->likes = new ArrayCollection();
     }
 
     /**

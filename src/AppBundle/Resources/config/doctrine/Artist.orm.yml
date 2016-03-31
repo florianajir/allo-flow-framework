@@ -1,0 +1,37 @@
+AppBundle\Entity\Artist:
+    type:  entity
+    table: artist
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            length: '32'
+            unique: true
+            nullable: false
+        description:
+            type: string
+        createdAt:
+            column: created_at
+            type: string
+
+    manyToOne:
+        city:
+            targetEntity: City
+            mappedBy: artists
+    oneToOne:
+        user:
+            targetEntity: User
+            mappedBy: artist
+
+    manyToMany:
+        events:
+            targetEntity: Event
+            mappedBy: artists
+
+    lifecycleCallbacks:
+        prePersist: [initCreatedAt]

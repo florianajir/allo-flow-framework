@@ -2,13 +2,13 @@
 
 namespace AppBundle\Model;
 
-use AppBundle\Mode\Traits\CreatedAtTrait;
-use AppBundle\Mode\Traits\DescriptionTrait;
-use AppBundle\Mode\Traits\LikeTrait;
-use AppBundle\Mode\Traits\NameTrait;
-use AppBundle\Mode\Traits\PhotoTrait;
-use AppBundle\Mode\Traits\TagTrait;
-use AppBundle\Mode\Traits\UpdatedAtTrait;
+use AppBundle\Model\Traits\CreatedAtTrait;
+use AppBundle\Model\Traits\DescriptionTrait;
+use AppBundle\Model\Traits\LikeTrait;
+use AppBundle\Model\Traits\NameTrait;
+use AppBundle\Model\Traits\PhotoTrait;
+use AppBundle\Model\Traits\TagTrait;
+use AppBundle\Model\Traits\UpdatedAtTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

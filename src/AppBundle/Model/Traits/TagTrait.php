@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Mode\Traits;
+namespace AppBundle\Model\Traits;
 
 use AppBundle\Entity\Artist;
 use AppBundle\Entity\Event;
@@ -11,8 +11,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 trait TagTrait
 {
-    use LikeTrait;
-
     /**
      * @var ArrayCollection
      */

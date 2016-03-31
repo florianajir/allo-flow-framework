@@ -23,6 +23,16 @@ class Artist extends Ressource
     private $collection;
 
     /**
+     * @var City[]|ArrayCollection
+     */
+    private $city;
+
+    /**
+     * @var Event[]|ArrayCollection
+     */
+    private $events;
+
+    /**
      * @return int
      */
     public function getId()
@@ -79,6 +89,58 @@ class Artist extends Ressource
     {
         $this->collection = $collection;
         
+        return $this;
+    }
+
+    /**
+     * @return City[]|ArrayCollection
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param City[]|ArrayCollection $city
+     *
+     * @return self
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return Event[]|ArrayCollection
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
+    /**
+     * @param Event $event
+     *
+     * @return self
+     */
+    public function addEvent(Event $event)
+    {
+        $this->events->add($event);
+
+        return $this;
+    }
+
+    /**
+     * @param Event $event
+     *
+     * @return self
+     */
+    public function removeEvent(Event $event)
+    {
+        $this->events->removeElement($event);
+
         return $this;
     }
 }

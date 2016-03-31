@@ -23,10 +23,6 @@ class TagType extends AbstractType
                     )
                 )
             )
-            ->add(
-                'description',
-                TextareaType::class
-            )
         ;
     }
 

@@ -2,12 +2,12 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Mode\Traits\CreatedAtTrait;
-use AppBundle\Mode\Traits\DescriptionTrait;
-use AppBundle\Mode\Traits\LikeTrait;
-use AppBundle\Mode\Traits\NameTrait;
-use AppBundle\Mode\Traits\TagTrait;
-use AppBundle\Mode\Traits\UpdatedAtTrait;
+use AppBundle\Model\Traits\CreatedAtTrait;
+use AppBundle\Model\Traits\DescriptionTrait;
+use AppBundle\Model\Traits\LikeTrait;
+use AppBundle\Model\Traits\NameTrait;
+use AppBundle\Model\Traits\TagTrait;
+use AppBundle\Model\Traits\UpdatedAtTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -44,25 +44,14 @@ class Photo
     private $imageName;
 
     /**
-     * @var \DateTime
-     */
-    private $publishedAt;
-
-    /**
      * @var Artist[]|ArrayCollection
      */
     private $artists;
-
-    /**
-     * @var \DateTime
-     */
-    private $updatedAt;
 
     public function __construct()
     {
         $this->likes = new ArrayCollection();
         $this->tags = new ArrayCollection();
-        $this->updatedAt = new \DateTime('now');
     }
 
     /**
@@ -128,14 +117,6 @@ class Photo
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
      * @return User
      */
     public function getUser()
@@ -170,33 +151,4 @@ class Photo
     {
         $this->artists = $artists;
     }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param \DateTime $publishedAt
-     *
-     * @return self
-     */
-    public function setPublishedAt($publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-
-        return $this;
-    }
-
-    /**
-     * init published date
-     */
-    public function initPublishedAtValue()
-    {
-        $this->publishedAt = new \DateTime();
-    }
 }
-

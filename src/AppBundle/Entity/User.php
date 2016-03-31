@@ -2,8 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Mode\Traits\LikeTrait;
-use AppBundle\Mode\Traits\PhotoTrait;
+use AppBundle\Model\Traits\LikeTrait;
+use AppBundle\Model\Traits\PhotoTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 

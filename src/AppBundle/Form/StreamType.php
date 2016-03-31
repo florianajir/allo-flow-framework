@@ -15,13 +15,20 @@ class StreamType extends AbstractType
     {
         $builder
             ->add(
-                'content',
+                'name',
                 TextType::class,
                 array(
                     'attr' => array(
                         'autocomplete' => 'off',
                         'placeholder' => 'Stream content'
                     )
+                )
+            )
+            ->add(
+                'description',
+                TextareaType::class,
+                array(
+                    'attr' => array()
                 )
             )
             ->add('tags', CollectionType::class, array(

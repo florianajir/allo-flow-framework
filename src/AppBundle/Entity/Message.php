@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Mode\Traits\CreatedAtTrait;
+use AppBundle\Model\Traits\CreatedAtTrait;
 
 /**
  * Message between users

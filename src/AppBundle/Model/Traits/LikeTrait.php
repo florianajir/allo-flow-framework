@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Mode\Traits;
+namespace AppBundle\Model\Traits;
 
 use AppBundle\Entity\Like;
 use Doctrine\Common\Collections\ArrayCollection;
