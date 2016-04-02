@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Ressource;
+use AppBundle\Entity\Ressource;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,9 +11,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 class City extends Ressource
 {
     /**
-     * @var int
+     * @var string
      */
-    private $id;
+    private $zipCode;
 
     /**
      * @var Region
@@ -24,31 +24,6 @@ class City extends Ressource
      * @var ArrayCollection|Artist[]
      */
     private $artists;
-
-    /**
-     * @var Event[]|ArrayCollection
-     */
-    private $events;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * @return Region
@@ -103,33 +78,21 @@ class City extends Ressource
     }
 
     /**
-     * @return Event[]|ArrayCollection
+     * @return string
      */
-    public function getEvents()
+    public function getZipCode()
     {
-        return $this->events;
+        return $this->zipCode;
     }
 
     /**
-     * @param Event $event
+     * @param string $zipCode
      *
      * @return self
      */
-    public function addEvent(Event $event)
+    public function setZipCode($zipCode)
     {
-        $this->events->add($event);
-
-        return $this;
-    }
-
-    /**
-     * @param Event $event
-     *
-     * @return self
-     */
-    public function removeEvent(Event $event)
-    {
-        $this->events->removeElement($event);
+        $this->zipCode = $zipCode;
 
         return $this;
     }

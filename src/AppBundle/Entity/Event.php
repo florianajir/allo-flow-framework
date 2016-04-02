@@ -2,7 +2,9 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Ressource;
+use AppBundle\Entity\Ressource;
+use AppBundle\Entity\Traits\DateIntervalTrait;
+use AppBundle\Entity\Traits\PriceTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,25 +13,13 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Event extends Ressource
 {
-    /**
-     * @var int
-     */
-    private $id;
+    use DateIntervalTrait;
+    use PriceTrait;
 
     /**
      * @var User
      */
-    private $moderator;
-
-    /**
-     * @var \DateTime
-     */
-    private $beginDate;
-
-    /**
-     * @var \DateTime
-     */
-    private $endDate;
+    private $owner;
 
     /**
      * @var ArrayCollection|Artist[]
@@ -42,46 +32,21 @@ class Event extends Ressource
     private $address;
 
     /**
-     * @var float
-     */
-    private $price;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
      * @return User
      */
-    public function getModerator()
+    public function getOwner()
     {
-        return $this->moderator;
+        return $this->owner;
     }
 
     /**
-     * @param User $moderator
+     * @param User $owner
      *
      * @return self
      */
-    public function setModerator($moderator)
+    public function setOwner($owner)
     {
-        $this->moderator = $moderator;
+        $this->owner = $owner;
 
         return $this;
     }
@@ -146,66 +111,6 @@ class Event extends Ressource
     public function setAddress($address)
     {
         $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param float $price
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getBeginDate()
-    {
-        return $this->beginDate;
-    }
-
-    /**
-     * @param \DateTime $beginDate
-     *
-     * @return self
-     */
-    public function setBeginDate(\DateTime $beginDate)
-    {
-        $this->beginDate = $beginDate;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * @param \DateTime $endDate
-     *
-     * @return self
-     */
-    public function setEndDate(\DateTime $endDate)
-    {
-        $this->endDate = $endDate;
 
         return $this;
     }

@@ -13,6 +13,12 @@ AppBundle\Entity\User:
 #            length: '32'
 #            unique: true
 #
+
+    oneToOne:
+        artist:
+            targetEntity: Artist
+            mappedBy: user
+
 #  oneToMany:
 #      streams:
 #          targetEntity: Stream

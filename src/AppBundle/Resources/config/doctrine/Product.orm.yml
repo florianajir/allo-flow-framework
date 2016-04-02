@@ -1,0 +1,37 @@
+AppBundle\Entity\Product:
+    type:  entity
+    table: product
+    fields:
+        price:
+            type: float
+            nullable: false
+        stock:
+            type: integer
+            nullable: false
+        beginDate:
+            column: begin_date
+            type: datetime
+        endDate:
+            column: end_date
+            type: datetime
+        creation:
+            type: datetime
+            nullable: true
+
+    manyToOne:
+        artist:
+            targetEntity: Artist
+            inversedBy: collection
+            joinColumn:
+                nullable: false
+    manyToMany:
+        photos:
+            targetEntity: Photo
+            joinTable:
+                name: product_photo
+                joinColumns:
+                    event_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    photo_id:
+                        referencedColumnName: id

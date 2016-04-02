@@ -1,0 +1,32 @@
+AppBundle\Entity\City:
+    type:  entity
+    table: city
+    fields:
+        zipCode:
+            type: string
+            nullable: false
+            column: zip_code
+
+    manyToOne:
+        region:
+            targetEntity: Region
+            inversedBy: cities
+            joinColumn:
+                nullable: false
+
+    oneToMany:
+        artists:
+            targetEntity: Artist
+            mappedBy: city
+
+    manyToMany:
+        photos:
+            targetEntity: Photo
+            joinTable:
+                name: city_photo
+                joinColumns:
+                    event_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    photo_id:
+                        referencedColumnName: id

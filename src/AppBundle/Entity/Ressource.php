@@ -1,14 +1,15 @@
 <?php
 
-namespace AppBundle\Model;
+namespace AppBundle\Entity;
 
-use AppBundle\Model\Traits\CreatedAtTrait;
-use AppBundle\Model\Traits\DescriptionTrait;
-use AppBundle\Model\Traits\LikeTrait;
-use AppBundle\Model\Traits\NameTrait;
-use AppBundle\Model\Traits\PhotoTrait;
-use AppBundle\Model\Traits\TagTrait;
-use AppBundle\Model\Traits\UpdatedAtTrait;
+use AppBundle\Entity\Traits\CreatedAtTrait;
+use AppBundle\Entity\Traits\DescriptionTrait;
+use AppBundle\Entity\Traits\IdTrait;
+use AppBundle\Entity\Traits\LikeTrait;
+use AppBundle\Entity\Traits\NameTrait;
+use AppBundle\Entity\Traits\PhotoTrait;
+use AppBundle\Entity\Traits\TagTrait;
+use AppBundle\Entity\Traits\UpdatedAtTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -22,6 +23,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 abstract class Ressource
 {
+    use IdTrait;
     use NameTrait;
     use DescriptionTrait;
     use LikeTrait;
@@ -32,7 +34,8 @@ abstract class Ressource
 
     public function __construct()
     {
-        $this->initCreatedAt();
+        $this->setCreatedAt();
+        $this->setUpdatedAt();
         $this->tags = new ArrayCollection();
         $this->likes = new ArrayCollection();
         $this->photos = new ArrayCollection();

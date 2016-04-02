@@ -2,17 +2,14 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Traits\CreatedAtTrait;
-use AppBundle\Model\Ressource;
+use AppBundle\Entity\Traits\CreatedAtTrait;
+use AppBundle\Entity\Ressource;
+use AppBundle\Entity\Traits\IdTrait;
 
 class Like
 {
     use CreatedAtTrait;
-
-    /**
-     * @var int
-     */
-    private $id;
+    use IdTrait;
 
     /**
      * @var User
@@ -24,34 +21,9 @@ class Like
      */
     private $ressource;
 
-    /**
-     * @var \DateTime
-     */
-    private $createdAt;
-
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
+        $this->setCreatedAt();
     }
 
     /**

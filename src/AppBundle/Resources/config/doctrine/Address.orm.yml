@@ -1,32 +1,42 @@
-AppBundle\Entity\Artist:
+AppBundle\Entity\Address:
     type:  entity
-    table: artist
+    table: address
+    fields:
+        street:
+            type: string
+            nullable: false
+        additional:
+            type: string
+            nullable: true
+        latitude:
+            type: float
+            nullable: true
+        longitude:
+            type: float
+            nullable: true
+
     manyToOne:
         city:
             targetEntity: City
             inversedBy: artists
             joinColumn:
                 nullable: false
-    oneToOne:
-        user:
+        owner:
             targetEntity: User
             cascade: [persist]
-            inversedBy: artist
             joinColumn:
                 nullable: false
-                name: user_id
-                referencedColumnName: id
 
     oneToMany:
-        collection:
-            targetEntity: Product
-            mappedBy: artist
+        events:
+            targetEntity: Event
+            mappedBy: address
 
     manyToMany:
         photos:
             targetEntity: Photo
             joinTable:
-                name: artist_photo
+                name: address_photo
                 joinColumns:
                     event_id:
                         referencedColumnName: id

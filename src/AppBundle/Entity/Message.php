@@ -2,7 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Traits\CreatedAtTrait;
+use AppBundle\Entity\Traits\CreatedAtTrait;
+use AppBundle\Entity\Traits\IdTrait;
 
 /**
  * Message between users
@@ -10,11 +11,7 @@ use AppBundle\Model\Traits\CreatedAtTrait;
 class Message
 {
     use CreatedAtTrait;
-
-    /**
-     * @var int
-     */
-    private $id;
+    use IdTrait;
 
     /**
      * @var User
@@ -39,26 +36,6 @@ class Message
     public function __construct()
     {
         $this->read = false;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     /**

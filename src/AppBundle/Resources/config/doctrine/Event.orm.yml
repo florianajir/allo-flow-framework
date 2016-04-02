@@ -1,0 +1,47 @@
+AppBundle\Entity\Event:
+    type:  entity
+    table: event
+    fields:
+        price:
+            type: float
+            nullable: true
+        beginDate:
+            column: begin_date
+            type: datetime
+        endDate:
+            column: end_date
+            type: datetime
+
+    manyToOne:
+        address:
+            targetEntity: Address
+            inversedBy: events
+            joinColumn:
+                nullable: false
+        owner:
+            targetEntity: User
+            inversedBy: events
+            joinColumn:
+                nullable: false
+
+    manyToMany:
+        artists:
+            targetEntity: Artist
+            joinTable:
+                name: event_artist
+                joinColumns:
+                    event_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    artist_id:
+                        referencedColumnName: id
+        photos:
+            targetEntity: Photo
+            joinTable:
+                name: event_photo
+                joinColumns:
+                    event_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    photo_id:
+                        referencedColumnName: id

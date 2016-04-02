@@ -2,17 +2,17 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Ressource;
+use AppBundle\Entity\Ressource;
 
 /**
- * Stream
+ * Stream model
  */
 class Stream extends Ressource
 {
     /**
-     * @var int
+     * @var \DateTime
      */
-    private $id;
+    private $expiration;
 
     /**
      * @var User
@@ -20,13 +20,23 @@ class Stream extends Ressource
     private $user;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @return \DateTime
      */
-    public function getId()
+    public function getExpiration()
     {
-        return $this->id;
+        return $this->expiration;
+    }
+
+    /**
+     * @param \DateTime $expiration
+     *
+     * @return self
+     */
+    public function setExpiration($expiration)
+    {
+        $this->expiration = $expiration;
+
+        return $this;
     }
 
     /**

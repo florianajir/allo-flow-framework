@@ -2,8 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Traits\LikeTrait;
-use AppBundle\Model\Traits\PhotoTrait;
+use AppBundle\Entity\Traits\LikeTrait;
+use AppBundle\Entity\Traits\PhotoTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -16,14 +16,14 @@ class User extends BaseUser
     use PhotoTrait;
 
     /**
-     * @var int
-     */
-    protected $id;
-
-    /**
      * @var City
      */
     protected $city;
+
+    /**
+     * @var Artist
+     */
+    protected $artist;
 
     /**
      * @var ArrayCollection
@@ -53,6 +53,26 @@ class User extends BaseUser
         parent::__construct();
         $this->streams = new ArrayCollection();
         $this->photos = new ArrayCollection();
+    }
+
+    /**
+     * @return Artist
+     */
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+
+    /**
+     * @param Artist $artist
+     *
+     * @return self
+     */
+    public function setArtist($artist)
+    {
+        $this->artist = $artist;
+        
+        return $this;
     }
 
     /**

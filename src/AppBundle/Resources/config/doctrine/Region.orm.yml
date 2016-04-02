@@ -1,0 +1,7 @@
+AppBundle\Entity\Region:
+    type:  entity
+    table: region
+    oneToMany:
+        cities:
+            targetEntity: City
+            mappedBy: region

@@ -2,12 +2,13 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Traits\CreatedAtTrait;
-use AppBundle\Model\Traits\DescriptionTrait;
-use AppBundle\Model\Traits\LikeTrait;
-use AppBundle\Model\Traits\NameTrait;
-use AppBundle\Model\Traits\TagTrait;
-use AppBundle\Model\Traits\UpdatedAtTrait;
+use AppBundle\Entity\Traits\CreatedAtTrait;
+use AppBundle\Entity\Traits\DescriptionTrait;
+use AppBundle\Entity\Traits\IdTrait;
+use AppBundle\Entity\Traits\LikeTrait;
+use AppBundle\Entity\Traits\NameTrait;
+use AppBundle\Entity\Traits\TagTrait;
+use AppBundle\Entity\Traits\UpdatedAtTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -16,17 +17,13 @@ use Symfony\Component\HttpFoundation\File\File;
  */
 class Photo
 {
-    use CreatedAtTrait;
+    use IdTrait;
     use DescriptionTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     use LikeTrait;
     use NameTrait;
     use TagTrait;
-    use UpdatedAtTrait;
-
-    /**
-     * @var int
-     */
-    private $id;
 
     /**
      * @var User
@@ -50,6 +47,8 @@ class Photo
 
     public function __construct()
     {
+        $this->setCreatedAt();
+        $this->setUpdatedAt();
         $this->likes = new ArrayCollection();
         $this->tags = new ArrayCollection();
     }

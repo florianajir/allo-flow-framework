@@ -2,16 +2,10 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Ressource;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Artist extends Ressource
 {
-    /**
-     * @var int
-     */
-    private $id;
-
     /**
      * @var User
      */
@@ -31,26 +25,6 @@ class Artist extends Ressource
      * @var Event[]|ArrayCollection
      */
     private $events;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-        
-        return $this;
-    }
 
     /**
      * @return User

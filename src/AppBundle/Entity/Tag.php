@@ -1,9 +1,10 @@
 <?php
 
 namespace AppBundle\Entity;
-use AppBundle\Model\Traits\CreatedAtTrait;
-use AppBundle\Model\Traits\LikeTrait;
-use AppBundle\Model\Traits\NameTrait;
+use AppBundle\Entity\Traits\CreatedAtTrait;
+use AppBundle\Entity\Traits\IdTrait;
+use AppBundle\Entity\Traits\LikeTrait;
+use AppBundle\Entity\Traits\NameTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,13 +12,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Tag
 {
-    use CreatedAtTrait;
+    use IdTrait;
     use NameTrait;
-
-    /**
-     * @var int
-     */
-    private $id;
+    use CreatedAtTrait;
 
     /**
      * @var Stream[]|ArrayCollection
@@ -45,16 +42,6 @@ class Tag
         $this->photos = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->artists = new ArrayCollection();
-    }
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

@@ -2,24 +2,19 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Ressource;
+use AppBundle\Entity\Ressource;
+use AppBundle\Entity\Traits\DateIntervalTrait;
+use AppBundle\Entity\Traits\PriceTrait;
 
 class Product extends Ressource
 {
-    /**
-     * @var int
-     */
-    private $id;
+    use DateIntervalTrait;
+    use PriceTrait;
 
     /**
      * @var Artist
      */
     private $artist;
-
-    /**
-     * @var float
-     */
-    private $price;
 
     /**
      * @var int
@@ -29,27 +24,7 @@ class Product extends Ressource
     /**
      * @var \DateTime
      */
-    private $birthdate;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+    private $creation;
 
     /**
      * @return Artist
@@ -74,40 +49,20 @@ class Product extends Ressource
     /**
      * @return \DateTime
      */
-    public function getBirthdate()
+    public function getCreation()
     {
-        return $this->birthdate;
+        return $this->creation;
     }
 
     /**
-     * @param \DateTime $birthdate
+     * @param \DateTime $creation
      *
      * @return self
      */
-    public function setBirthdate($birthdate)
+    public function setCreation($creation)
     {
-        $this->birthdate = $birthdate;
+        $this->creation = $creation;
         
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param float $price
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
         return $this;
     }
 
@@ -124,7 +79,7 @@ class Product extends Ressource
      *
      * @return self
      */
-    public function setStock($stock)
+    public function setStock($stock = 1)
     {
         $this->stock = $stock;
 

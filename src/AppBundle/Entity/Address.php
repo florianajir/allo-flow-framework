@@ -2,28 +2,32 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Model\Ressource;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * 
+ * Address model (for events)
  */
 class Address extends Ressource
 {
     /**
-     * @var int
-     */
-    private $id;
-
-    /**
      * @var User
      */
-    private $moderator;
+    private $owner;
 
     /**
      * @var City
      */
     private $city;
+
+    /**
+     * @var string
+     */
+    private $street;
+
+    /**
+     * @var string
+     */
+    private $additional;
 
     /**
      * @var float
@@ -36,46 +40,26 @@ class Address extends Ressource
     private $longitude;
 
     /**
-     * @var Artist[]|ArrayCollection
+     * @var Event[]|ArrayCollection
      */
-    private $artists;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+    private $events;
 
     /**
      * @return User
      */
-    public function getModerator()
+    public function getOwner()
     {
-        return $this->moderator;
+        return $this->owner;
     }
 
     /**
-     * @param User $moderator
+     * @param User $owner
      *
      * @return self
      */
-    public function setModerator($moderator)
+    public function setOwner($owner)
     {
-        $this->moderator = $moderator;
+        $this->owner = $owner;
 
         return $this;
     }
@@ -96,6 +80,66 @@ class Address extends Ressource
     public function setCity($city)
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZipCode()
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * @param string $zipCode
+     *
+     * @return self
+     */
+    public function setZipCode($zipCode)
+    {
+        $this->zipCode = $zipCode;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
+     * @param string $street
+     *
+     * @return self
+     */
+    public function setStreet($street)
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdditional()
+    {
+        return $this->additional;
+    }
+
+    /**
+     * @param string $additional
+     *
+     * @return self
+     */
+    public function setAdditional($additional)
+    {
+        $this->additional = $additional;
 
         return $this;
     }
@@ -141,32 +185,21 @@ class Address extends Ressource
     }
 
     /**
-     * @return Artist[]|ArrayCollection
+     * @return Event[]|ArrayCollection
      */
-    public function getArtists()
+    public function getEvents()
     {
-        return $this->artists;
+        return $this->events;
     }
 
     /**
-     * @param Artist $artist
+     * @param Event[]|ArrayCollection $events
      *
      * @return self
      */
-    public function addArtist(Artist $artist)
+    public function setEvents($events)
     {
-        $this->artists->add($artist);
-
-        return $this;
-    }
-    /**
-     * @param Artist $artist
-     *
-     * @return self
-     */
-    public function removeArtist(Artist $artist)
-    {
-        $this->artists->removeElement($artist);
+        $this->events = $events;
 
         return $this;
     }

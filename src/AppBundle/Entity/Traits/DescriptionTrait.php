@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Model\Traits;
+namespace AppBundle\Entity\Traits;
 
 trait DescriptionTrait
 {
