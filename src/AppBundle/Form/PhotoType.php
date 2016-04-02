@@ -16,7 +16,7 @@ class PhotoType extends AbstractType
     {
         $builder
             ->add(
-                'title',
+                'name',
                 TextType::class
             )
             ->add(

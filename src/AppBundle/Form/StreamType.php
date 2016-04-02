@@ -20,7 +20,7 @@ class StreamType extends AbstractType
                 array(
                     'attr' => array(
                         'autocomplete' => 'off',
-                        'placeholder' => 'Stream content'
+                        'placeholder' => 'Stream'
                     )
                 )
             )

@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headerNavbar" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -11,23 +11,31 @@
             </button>
             <a class="navbar-brand" href="{{ path('homepage') }}">{{ 'domain.name' | trans({}, 'domain') }}</a>
         </div>
+        <div class="collapse navbar-collapse" id="headerNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
 
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Inbox <span class="badge">42</span></a></li>
-                            <li><a href="#">Profil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
-                        </ul>
-                    {% else %}
-                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                    {% endif %}
-                </li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"></i>
+                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} <span class="caret"></span>
+                    </a>
+                    </li>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Inbox <span class="badge">42</span></a></li>
+                        <li><a href="#">Profil</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                    </ul>
+                {% else %}
+                    <li class="dropdown">
+                    <a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i> {{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                    </li>
+                    <li class="dropdown">
+                    <a href="{{ path('fos_user_security_login') }}"><i class="fa fa-sign-in"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    </li>
+                {% endif %}
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
