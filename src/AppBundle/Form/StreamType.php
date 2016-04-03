@@ -20,7 +20,7 @@ class StreamType extends AbstractType
                 array(
                     'attr' => array(
                         'autocomplete' => 'off',
-                        'placeholder' => 'Stream'
+                        'placeholder' => 'form.stream.name'
                     )
                 )
             )
@@ -28,23 +28,18 @@ class StreamType extends AbstractType
                 'description',
                 TextareaType::class,
                 array(
-                    'attr' => array()
+                    'attr' => array(),
+                    'label' => 'form.stream.description'
                 )
             )
-            ->add('tags', CollectionType::class, array(
-                    'required'  => false,
-                    'entry_type' => TagType::class,
-                    'allow_add' => true,
-                    'by_reference' => false,
-                    'prototype_name' => 'prototype'
-                )
-            );
+            ->add('tags', TagListType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Stream'
+            'data_class' => 'AppBundle\Entity\Stream',
+            'translation_domain' => 'form',
         ));
     }
 }

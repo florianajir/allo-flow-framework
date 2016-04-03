@@ -27,3 +27,25 @@ services:
         class: AppBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+
+    app.tag.manager:
+        class: AppBundle\Manager\TagManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    app.tag.repository:
+        class: AppBundle\Repository\TagRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    app.form.tag_list:
+        class: AppBundle\Form\TagListType
+        arguments:
+            - '@app.form.tag_to_name.transformer'
+        tags:
+            - { name: form.type, alias: app_tag_list }
+
+    app.form.tag_to_name.transformer:
+        class: AppBundle\Form\DataTransformer\TagListTransformer
+        arguments:
+            - '@app.tag.manager'

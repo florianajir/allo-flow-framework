@@ -3,7 +3,7 @@
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
 
-                {% set embed = embed(stream.content) %}
+                {% set embed = embed(stream.name) %}
                 {% if embed %}
                     <img src="{{ embed.image }}" alt="Stream thumbnail">
                     {#{{ include('stream/embed.html.twig', {'embed': embed}) }}#}
@@ -11,17 +11,28 @@
 
                 {#<img src="http://img.youtube.com/vi/{{ 'video_id' }}/default.jpg" alt="...">#}
                 <div class="caption">
-                    <h3>Thumbnail label</h3>
+                    <h3>{{ stream.name }}</h3>
                     <p>
                         {% if embed %}
                             {#<img src="{{ embed.image }}" alt="Stream thumbnail">#}
                             {{ include('stream/embed.html.twig', {'embed': embed}) }}
                         {% else %}
-                            {{ stream.content }}
+
                         {% endif %}
                     </p>
                     <p>
-                        <a href="#" class="btn btn-primary" role="button" title="view">View</a>
+                        {% for tag in stream.tags %}
+                            <span class="label label-info">
+                                <i class="fa fa-tag"></i>
+                                <a href="{{ path('tag_show', {'id': tag.id}) }}">
+                                    {{ tag.name }}
+                                </a>
+                            </span>
+                            &nbsp;
+                        {% endfor %}
+                    </p>
+                    <p>
+                        <a href="{{ path('stream_show', {'id': stream.id}) }}" class="btn btn-primary" role="button" title="view">View</a>
                         <a href="#" class="btn btn-default" role="button" title="star"><i class="fa fa-star-o"></i></a>
                         <a href="#" class="btn btn-default" role="button" title="retweet"><i class="fa fa-retweet"></i></a>
                     </p>

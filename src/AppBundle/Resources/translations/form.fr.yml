@@ -1,0 +1,8 @@
+form:
+  tags: Tags
+
+  stream:
+    name: name
+    description: description
+  user:
+    city: Ma ville

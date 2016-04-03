@@ -1,0 +1,19 @@
+{% extends 'bootstrap_3_layout.html.twig' %}
+
+{% block _stream_tag_list_row %}
+    {{ form_label(form) }}
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="fa fa-tags"></i>
+        </span>
+        {{ form_widget(form) }}
+    </div>
+{% endblock %}
+
+{% block _photo_tag_list_row %}
+    {{ form_label(form) }}
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-tags"></i> </span>
+        {{ form_widget(form) }}
+    </div>
+{% endblock %}

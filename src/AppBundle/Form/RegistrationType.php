@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class RegistrationType extends AbstractType
@@ -13,6 +14,14 @@ class RegistrationType extends AbstractType
         //remove confirmation field
         $builder->remove('plainPassword');
         $builder->add('plainPassword', PasswordType::class, array('label' => 'form.password', 'translation_domain' => 'FOSUserBundle'));
+        $builder->add(
+            'city',
+            TextType::class,
+            array(
+                'label' => 'form.user.city',
+                'translation_domain' => 'form'
+            )
+        );
     }
 
     public function getParent()

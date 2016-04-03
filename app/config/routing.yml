@@ -17,5 +17,10 @@ stream_new:
     defaults:  { _controller: AppBundle:Stream:new }
     methods:  [POST]
 
+tag_show:
+    path: /tag/{id}
+    defaults:  { _controller: AppBundle:Tag:show }
+    methods:  [GET]
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
