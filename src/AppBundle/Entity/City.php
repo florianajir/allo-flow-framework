@@ -16,9 +16,14 @@ class City extends Ressource
     private $zipCode;
 
     /**
-     * @var Region
+     * @var string
      */
     private $region;
+
+    /**
+     * @var string
+     */
+    private $country;
 
     /**
      * @var ArrayCollection|Artist[]
@@ -26,7 +31,7 @@ class City extends Ressource
     private $artists;
 
     /**
-     * @return Region
+     * @return string
      */
     public function getRegion()
     {
@@ -34,7 +39,7 @@ class City extends Ressource
     }
 
     /**
-     * @param Region $region
+     * @param string $region
      *
      * @return self
      */
@@ -42,6 +47,26 @@ class City extends Ressource
     {
         $this->region = $region;
         
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
         return $this;
     }
 

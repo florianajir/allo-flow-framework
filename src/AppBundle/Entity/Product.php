@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\Ressource;
 use AppBundle\Entity\Traits\DateIntervalTrait;
 use AppBundle\Entity\Traits\PriceTrait;
 

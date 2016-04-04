@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 
 use AppBundle\Form\DataTransformer\TagListTransformer;
 use Symfony\Component\Form\AbstractType;

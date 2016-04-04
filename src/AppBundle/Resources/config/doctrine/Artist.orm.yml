@@ -1,12 +1,9 @@
 AppBundle\Entity\Artist:
     type:  entity
     table: artist
-    manyToOne:
-        city:
-            targetEntity: City
-            inversedBy: artists
-            joinColumn:
-                nullable: false
+    fields:
+        activity:
+            type: string
     oneToOne:
         user:
             targetEntity: User

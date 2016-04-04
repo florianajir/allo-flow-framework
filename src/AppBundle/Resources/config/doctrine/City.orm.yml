@@ -6,13 +6,12 @@ AppBundle\Entity\City:
             type: string
             nullable: false
             column: zip_code
-
-    manyToOne:
+        country:
+            type: string
+            nullable: false
         region:
-            targetEntity: Region
-            inversedBy: cities
-            joinColumn:
-                nullable: false
+            type: string
+            nullable: false
 
     oneToMany:
         artists:

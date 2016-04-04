@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -9,6 +9,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class RegistrationType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         //remove confirmation field
@@ -16,7 +19,7 @@ class RegistrationType extends AbstractType
         $builder->add('plainPassword', PasswordType::class, array('label' => 'form.password', 'translation_domain' => 'FOSUserBundle'));
         $builder->add(
             'city',
-            TextType::class,
+            CityType::class,
             array(
                 'label' => 'form.user.city',
                 'translation_domain' => 'form'
@@ -24,11 +27,17 @@ class RegistrationType extends AbstractType
         );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getParent()
     {
         return 'FOS\UserBundle\Form\Type\RegistrationFormType';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getBlockPrefix()
     {
         return 'app_user_registration';

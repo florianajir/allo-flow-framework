@@ -1,15 +1,16 @@
 <?php
 
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class PhotoType extends AbstractType
+abstract class RessourceType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -25,8 +26,24 @@ class PhotoType extends AbstractType
                 'description',
                 TextareaType::class
             )
-            ->add('imageFile', FileType::class)
-            ->add('tags', TagListType::class);;
+            ->add(
+                'tags',
+                TagListType::class
+            )
+            ->add(
+                'photos',
+                CollectionType::class,
+                array(
+                    'entry_type'   => PhotoType::class,
+                    'entry_options'  => array(
+                        'required'  => false,
+                    ),
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'delete_empty' => true
+                )
+            )
+        ;
     }
 
     /**
@@ -35,7 +52,7 @@ class PhotoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Photo'
+            'translation_domain' => 'form'
         ));
     }
 }

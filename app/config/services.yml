@@ -49,3 +49,10 @@ services:
         class: AppBundle\Form\DataTransformer\TagListTransformer
         arguments:
             - '@app.tag.manager'
+
+    app.form.type.artist_activity:
+        class: AppBundle\Form\Type\ArtistActivityType
+        arguments:
+            - '%artist_activities%'
+        tags:
+            - { name: form.type }

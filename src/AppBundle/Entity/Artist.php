@@ -7,6 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Artist extends Ressource
 {
     /**
+     * @var string
+     */
+    private $activity;
+
+    /**
      * @var User
      */
     private $user;
@@ -17,14 +22,29 @@ class Artist extends Ressource
     private $collection;
 
     /**
-     * @var City[]|ArrayCollection
-     */
-    private $city;
-
-    /**
      * @var Event[]|ArrayCollection
      */
     private $events;
+
+    /**
+     * @return string
+     */
+    public function getActivity()
+    {
+        return $this->activity;
+    }
+
+    /**
+     * @param string $activity
+     *
+     * @return self
+     */
+    public function setActivity($activity)
+    {
+        $this->activity = $activity;
+
+        return $this;
+    }
 
     /**
      * @return User
@@ -63,26 +83,6 @@ class Artist extends Ressource
     {
         $this->collection = $collection;
         
-        return $this;
-    }
-
-    /**
-     * @return City[]|ArrayCollection
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param City[]|ArrayCollection $city
-     *
-     * @return self
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
         return $this;
     }
 

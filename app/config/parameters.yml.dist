@@ -19,3 +19,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     google_api_key: ~
+    artist_activities: [Paint, Sculture, Photo, Music, Video, other]
