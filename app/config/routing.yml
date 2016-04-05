@@ -22,5 +22,21 @@ tag_show:
     defaults:  { _controller: AppBundle:Tag:show }
     methods:  [GET]
 
+event_index:
+    path:      /events
+    defaults:  { _controller: AppBundle:Event:index }
+    methods:  [GET]
+
+artist_index:
+    path:      /artists
+    defaults:  { _controller: AppBundle:Event:index }
+    methods:  [GET]
+
+address_index:
+    path:      /addresses
+    defaults:  { _controller: AppBundle:Event:index }
+    methods:  [GET]
+
+# FOS USER
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

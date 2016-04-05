@@ -2,13 +2,12 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Photo;
-use AppBundle\Entity\Stream;
-use AppBundle\Form\PhotoType;
-use AppBundle\Form\StreamType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @author Florian Ajir <florianajir@gmail.com>
+ */
 class DefaultController extends Controller
 {
     /**
@@ -21,19 +20,10 @@ class DefaultController extends Controller
             ->getRepository('AppBundle:Stream')
             ->findLatests();
 
-        $stream = new Stream();
-        $streamForm = $this->createForm(StreamType::class, $stream, array(
-            'action' => $this->generateUrl('stream_new')
-        ));
-        $photo = new Photo();
-        $photoForm = $this->createForm(PhotoType::class, $photo, array(
-//            'action' => $this->generateUrl('photo_new')
-        ));
+        // TODO load lists : cities, artists, events, addresses
 
         return $this->render('default/index.html.twig', [
-            'streams' => $streams,
-            'streamForm' => $streamForm->createView(),
-            'photoForm' => $photoForm->createView()
+            'streams' => $streams
         ]);
     }
 }

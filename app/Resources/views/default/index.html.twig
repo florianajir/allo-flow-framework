@@ -1,14 +1,54 @@
-{% extends 'base.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block body %}
     <div id="wrapper">
-        <div class="container">
-            {{ include('default/share.html.twig') }}
+        <div class="container" id="index-cities">
+            <div class="row">
+                {% for i in 0..5 %}
+                    <img src="" alt="..." class="img-rounded">
+                {% endfor %}
+            </div>
+            {#{{ include('stream/index.html.twig') }}#}
         </div>
-        <div class="container">
+
+        <div class="container" id="index-artists">
+            {% for i in 0..5 %}
+            <img src="" alt="..." class="img-circle">
+            {% endfor %}
+            {#{{ include('artist/index.html.twig') }}#}
+        </div>
+
+        <div class="container" id="index-events">
+            {% for i in 0..5 %}
+            <img src="" alt="..." class="img-circle">
+            {% endfor %}
+            {#{{ include('artist/index.html.twig') }}#}
+        </div>
+
+        <div class="container" id="index-addresses">
+            {% for i in 0..5 %}
+            <img src="" alt="..." class="img-thumbnail">
+            {% endfor %}
+            {#{{ include('address/index.html.twig') }}#}
+        </div>
+
+        <div class="container" id="index-streams">
+            {#{% for i in 0..5 %}#}
             {{ include('stream/index.html.twig') }}
+            {#{% endfor %}#}
         </div>
     </div>
+{% endblock %}
+
+
+{% block navbar %}
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#index-cities" aria-controls="{{ 'city' | trans }}" role="tab" data-toggle="tab">{{ 'menu.city' | trans }}</a></li>
+    <li role="presentation"><a href="#index-events" aria-controls="{{ 'events' | trans }}" role="tab" data-toggle="tab">{{ 'menu.events' | trans }}</a></li>
+    <li role="presentation"><a href="#index-artists" aria-controls="{{ 'artists' | trans }}" role="tab" data-toggle="tab">{{ 'menu.artists' | trans }}</a></li>
+    <li role="presentation"><a href="#index-addresses" aria-controls="{{ 'addresses' | trans }}" role="tab" data-toggle="tab">{{ 'menu.addresses' | trans }}</a></li>
+    <li role="presentation"><a href="#index-streams" aria-controls="{{ 'streams' | trans }}" role="tab" data-toggle="tab">{{ 'menu.streams' | trans }}</a></li>
+</ul>
 {% endblock %}
 
 {% block stylesheets %}

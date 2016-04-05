@@ -10,7 +10,7 @@ AppBundle\Entity\Stream:
     manyToOne:
         user:
             targetEntity: User
-            inversedBy: streams
+#            inversedBy: streams
             joinColumn:
                 name: user_id
                 referencedColumnName: id

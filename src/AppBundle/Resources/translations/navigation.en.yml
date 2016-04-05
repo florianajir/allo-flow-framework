@@ -1,3 +1,9 @@
 layout:
   connect: Se connecter
   register: Créer un compte
+
+menu:
+  home: Homepage
+  events: Events
+  artists: Artists
+  addresses: Addresses

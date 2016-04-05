@@ -18,11 +18,19 @@ class RegistrationType extends AbstractType
         $builder->remove('plainPassword');
         $builder->add('plainPassword', PasswordType::class, array('label' => 'form.password', 'translation_domain' => 'FOSUserBundle'));
         $builder->add(
+            'city_search',
+            TextType::class,
+            array(
+                'mapped' => false,
+                'label' => 'form.user.city',
+                'translation_domain' => 'form'
+            )
+        );
+        $builder->add(
             'city',
             CityType::class,
             array(
-                'label' => 'form.user.city',
-                'translation_domain' => 'form'
+                'label' => false
             )
         );
     }

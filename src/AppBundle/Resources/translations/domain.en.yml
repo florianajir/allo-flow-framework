@@ -1,3 +1,6 @@
 domain:
   name: AlloFlow
   description: Social stream
+  artists: Artists
+  events: Events
+  addresses: Addresses
