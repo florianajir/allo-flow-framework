@@ -1,5 +1,5 @@
 {#<nav class="navbar navbar-default navbar-static-top">#}
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -9,17 +9,35 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('homepage') }}">{{ 'domain.name' | trans({}, 'domain') }}</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}"><i class="fa fa-home"></i> {{ 'domain.name' | trans({}, 'domain') }}</a>
         </div>
-        {# Pages #}
-        <ul class="nav navbar-nav">
-            <li>
-                <a href="#">l'actualité artistique de ma ville</a>
-            </li>
-            <li>
-                <a href="#">Le coin des artistes</a>
-            </li>
-        </ul>
+        <div id="navbar-relative">
+            {% block navbar %}
+            {% set current_url = app.request.attributes.get('_route') %}
+            <ul class="nav navbar-nav">
+                <li role="presentation" {{ current_url == path('homepage') ? 'class="active"' : ''}}>
+                    <a href="{{ path('homepage') }}" aria-controls="homepage">
+                        <i class="fa fa-home"></i> {{ 'menu.home' | trans({}, 'navigation') }}
+                    </a>
+                </li>
+                <li role="presentation" {{ current_url == path('artist_index') ? 'class="active"' : ''}}>
+                    <a href="{{ path('artist_index') }}" aria-controls="{{ 'domain.artists' | trans({}, 'domain') }}">
+                        {{ 'menu.artists' | trans({}, 'navigation') }}
+                    </a>
+                </li>
+                <li role="presentation" {{ current_url == path('event_index') ? 'class="active"' : ''}}>
+                    <a href="{{ path('event_index') }}" aria-controls="{{ 'domain.events' | trans({}, 'domain') }}">
+                        {{ 'menu.events' | trans({}, 'navigation') }}
+                    </a>
+                </li>
+                <li role="presentation" {{ current_url == path('address_index') ? 'class="active"' : ''}}>
+                    <a href="{{ path('address_index') }}" aria-controls="{{ 'domain.addresses' | trans({}, 'domain') }}">
+                        {{ 'menu.addresses' | trans({}, 'navigation') }}
+                    </a>
+                </li>
+            </ul>
+            {% endblock %}
+        </div>
         <div class="collapse navbar-collapse" id="collapsedHeaderNavbar">
             <ul class="nav navbar-nav navbar-right">
 

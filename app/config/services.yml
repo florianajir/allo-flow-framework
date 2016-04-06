@@ -24,7 +24,7 @@ services:
             - { name: twig.extension }
 
     app.form.registration:
-        class: AppBundle\Form\RegistrationType
+        class: AppBundle\Form\Type\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
 
@@ -39,7 +39,7 @@ services:
             - '@doctrine.orm.entity_manager'
 
     app.form.tag_list:
-        class: AppBundle\Form\TagListType
+        class: AppBundle\Form\Type\TagListType
         arguments:
             - '@app.form.tag_to_name.transformer'
         tags:
