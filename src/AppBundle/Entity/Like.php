@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Entity\Traits\CreatedAtTrait;
-use AppBundle\Entity\Ressource;
 use AppBundle\Entity\Traits\IdTrait;
 
 class Like

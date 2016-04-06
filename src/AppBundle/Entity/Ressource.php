@@ -32,6 +32,9 @@ abstract class Ressource
     use CreatedAtTrait;
     use UpdatedAtTrait;
 
+    /**
+     * Initialize ressource properties (collections and lifecycle dates)
+     */
     public function __construct()
     {
         $this->setCreatedAt();

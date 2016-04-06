@@ -19,9 +19,9 @@ class TagRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->getEntityManager()
             ->createQuery(
-                'SELECT t FROM AppBundle:Tag t
-            WHERE t.name = :name'
-            )->setParameter('name', $tagName);
+                'SELECT t FROM AppBundle:Tag t WHERE t.name = :name'
+            )
+            ->setParameter('name', $tagName);
 
         try {
             return $query->getSingleResult();

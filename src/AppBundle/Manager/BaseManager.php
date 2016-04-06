@@ -2,15 +2,27 @@
 
 namespace AppBundle\Manager;
 
+use Doctrine\ORM\EntityManager;
+
 /**
- * Class BaseManager
+ * Class BaseManager, for inheritance to others managers
+ *
+ * @author Florian Ajir <florianajir@gmail.com>
  */
 abstract class BaseManager
 {
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
     protected $em;
+
+    /**
+     * @param EntityManager $em
+     */
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
 
     /**
      * @param object $entity
