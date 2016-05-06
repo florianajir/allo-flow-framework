@@ -1,0 +1,5 @@
+{% block _tags_entry_row %}
+    {{ dump(form) }}
+    {{ form_label(form.vars.prototype.name, 'Tags', {'attr': {'class': 'sr-only'} }) }}
+    {{ form_widget(form.vars.prototype.name) }}
+{% endblock %}
