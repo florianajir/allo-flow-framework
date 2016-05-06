@@ -7,3 +7,8 @@ menu:
   events: Events
   artists: Artists
   addresses: Addresses
+
+language:
+  selector: Change language
+  en: English
+  fr: French

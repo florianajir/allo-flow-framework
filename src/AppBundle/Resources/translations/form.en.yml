@@ -5,3 +5,5 @@ form:
     description: description
   user:
     city: My city
+  login:
+    remember_me: Keep me signed in

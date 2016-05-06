@@ -1,5 +1,6 @@
 AppBundle\Entity\User:
     type:  entity
+    repositoryClass: AppBundle\Repository\UserRepository
     table: fos_user
     id:
         id:
@@ -7,12 +8,15 @@ AppBundle\Entity\User:
             generator:
                 strategy: AUTO
 
-#    fields:
-#        name:
-#            type: string
-#            length: '32'
-#            unique: true
-#
+    fields:
+        locale:
+            type: string
+            length: '2'
+            nullable: false
+
+        createdAt:
+            column: created_at
+            type: datetime
 
     oneToOne:
         artist:
@@ -28,3 +32,6 @@ AppBundle\Entity\User:
 #      photos:
 #          targetEntity: Photo
 #          mappedBy: user
+
+    lifecycleCallbacks:
+        prePersist: [setCreatedAt]

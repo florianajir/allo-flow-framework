@@ -4,30 +4,47 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/signin.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('components/bootstrap-social/bootstrap-social.css') }}" />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var active = false;
+            $('.btn-password-show').click(function () {
+                active = !active;
+                var target = $($(this).attr('data-target'));
+                var type = 'password';
+                if (active) {
+                    type = 'text';
+                }
+                $(target).attr('type', type);
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block fos_user_content %}
-
     <form action="{{ path("fos_user_security_check") }}" class="form-signin" method="post">
-        <h2 class="form-signin-heading">{{ 'layout.connect'|trans({}, 'navigation') }}</h2>
+        <div class="page-header">
+            <h1>{{ 'layout.connect'|trans({}, 'navigation') }}</h1>
+        </div>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-
-        <div class="form-group">
-            <label for="username" class="sr-only">{{ 'security.login.username'|trans }}</label>
+        <div class="form-group form-group-lg">
+            <label for="username" class="">{{ 'security.login.username'|trans }}</label>
             <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="{{ 'security.login.username'|trans }}" autofocus="autofocus"/>
         </div>
-
         <div class="form-group">
-            <label for="password" class="sr-only">{{ 'security.login.password'|trans }}</label>
-            <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="{{ 'security.login.password'|trans }}"/>
+            <label for="password" class="">{{ 'security.login.password'|trans }}</label>
+            <div class="input-group input-group-lg">
+                <input autocomplete="off" type="password" id="password" name="_password" required value="" class="form-control" placeholder="{{ 'security.login.password'|trans }}"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-password-show" type="button" data-target="#password" data-toggle="button" title="Show/Hide Password" tabindex="-1">
+                        <span class="fa fa-eye"></span>
+                    </button>
+                </span>
+            </div>
         </div>
-
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans }}
-            </label>
-        </div>
-
         {% if error %}
             <div class="alert alert-danger" role="alert">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -35,18 +52,42 @@
                 {{ error.messageKey|trans(error.messageData, 'security') }}
             </div>
         {% endif %}
+
         <input type="submit"
-               class="btn btn-lg btn-primary btn-block"
+               class="btn btn-lg btn-primary btn-block btn-loading"
                id="_submit"
                name="_submit"
+               data-loading-text="<span class='fa fa-spin fa-spinner'></span> Please wait.."
                value="{{ 'security.login.submit'|trans }}"/>
+
+        <div class="form-group">
+            <div class="btn-group btn-group-justified form-control-static">
+                <a class="btn btn-link btn-xs ellipsis" href="{{ path("fos_user_security_check") }}">Forgot password?</a>
+                <a class="btn btn-link btn-xs ellipsis" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+            </div>
+        </div>
+        <legend class="text-muted text-center">or</legend>
+        <div class="text-center">
+            <a class="btn btn-lg btn-block btn-social btn-google" href="#" title="Sign in with Google" rel="nofollow">
+                <span class="fa fa-google"></span> Sign in with Google
+            </a>
+            <a class="btn btn-lg btn-block btn-social btn-facebook" href="#" title="Sign in with Facebook" rel="nofollow">
+                <span class="fa fa-facebook"></span> Sign in with Facebook
+            </a>
+        </div>
+        <hr>
+        <div class="checkbox remember">
+            <label>
+                <input type="checkbox" name="_remember_me" checked> {{ 'form.login.remember_me'|trans({}, 'form') }}
+            </label>
+        </div>
+        {#<a class="btn btn-block btn-social btn-facebook">#}
+            {#<span class="fa fa-facebook"></span>#}
+            {#Sign in with Facebook#}
+        {#</a>#}
+        {#<a class="btn btn-block btn-social btn-google">#}
+            {#<span class="fa fa-google"></span>#}
+            {#Sign in with Google#}
+        {#</a>#}
     </form>
-
-    {#<form class="form-signin">#}
-    {#<label for="inputEmail" class="sr-only">Email address</label>#}
-    {#<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>#}
-    {#<label for="inputPassword" class="sr-only">Password</label>#}
-    {#<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>#}
-    {#</form>#}
 {% endblock fos_user_content %}
-

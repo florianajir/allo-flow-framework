@@ -31,7 +31,7 @@ function fillInAddress() {
     //     document.getElementById(component).value = '';
     //     document.getElementById(component).disabled = false;
     // }
-// console.log(place.name);
+console.log(place);
 
     document.getElementById(autocompletedId).value = place.name;
     // Get each component of the address from the place details
@@ -60,7 +60,6 @@ function geolocate() {
                 radius: position.coords.accuracy
             });
             autocomplete.setBounds(circle.getBounds());
-            console.log(position);
             codeLatLng(position.coords.latitude, position.coords.longitude);
         });
     }
@@ -78,15 +77,16 @@ function codeLatLng(lat, lng) {
                 //find country name
                 for (var i=0; i<results[0].address_components.length; i++) {
                     for (var b=0;b<results[0].address_components[i].types.length;b++) {
-
+console.log(results[0].address_components[i]);
                         //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
                         if (results[0].address_components[i].types[b] == "locality") {
                             //this is the object you are looking for
-                            city= results[0].address_components[i];
+                            var city = results[0].address_components[i];
                             break;
                         }
                     }
                 }
+                console.log(autocompletedId);
                 //city data
                 document.getElementById(autocompletedId).value = city.short_name;
                 // alert(city.short_name + " " + city.long_name)

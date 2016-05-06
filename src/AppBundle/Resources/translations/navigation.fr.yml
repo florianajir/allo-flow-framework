@@ -4,6 +4,11 @@ layout:
 
 menu:
   home: Accueil
-  events: Evènements
-  artists: Artistes
-  addresses: Adresses
+  events: Evènements à venir
+  artists: Coin des artistes
+  addresses: Bonnes adresses
+
+language:
+  selector: Changer de langue
+  en: Anglais
+  fr: Français

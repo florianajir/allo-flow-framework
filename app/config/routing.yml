@@ -2,6 +2,10 @@ homepage:
     path:      /
     defaults:  { _controller: AppBundle:Default:index }
 
+setlocale:
+    path:      /setlocale/{language}
+    defaults:  { _controller: AppBundle:Default:setLocale }
+
 stream_index:
     path:      /streams
     defaults:  { _controller: AppBundle:Stream:index }

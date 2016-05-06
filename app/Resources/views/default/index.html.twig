@@ -2,40 +2,41 @@
 
 {% block body %}
     <div id="wrapper">
-        <div class="container" id="index-cities">
-            <div class="row">
-                {% for i in 0..5 %}
-                    <img src="" alt="..." class="img-rounded">
-                {% endfor %}
-            </div>
+        {#<div class="container" id="index-cities">#}
+            {#<div class="row">#}
+                {#{% for i in 0..5 %}#}
+                    {#<img src="" alt="..." class="img-rounded">#}
+                {#{% endfor %}#}
+            {#</div>#}
             {#{{ include('stream/index.html.twig') }}#}
-        </div>
+        {#</div>#}
 
-        <div class="container" id="index-artists">
-            {% for i in 0..5 %}
-            <img src="" alt="..." class="img-circle">
-            {% endfor %}
-            {#{{ include('artist/index.html.twig') }}#}
-        </div>
-
-        <div class="container" id="index-events">
-            {% for i in 0..5 %}
-            <img src="" alt="..." class="img-circle">
-            {% endfor %}
-            {#{{ include('artist/index.html.twig') }}#}
-        </div>
-
-        <div class="container" id="index-addresses">
-            {% for i in 0..5 %}
-            <img src="" alt="..." class="img-thumbnail">
-            {% endfor %}
-            {#{{ include('address/index.html.twig') }}#}
-        </div>
-
-        <div class="container" id="index-streams">
+        {#<div class="container" id="index-artists">#}
             {#{% for i in 0..5 %}#}
-            {{ include('stream/index.html.twig') }}
+            {#<img src="" alt="..." class="img-circle">#}
             {#{% endfor %}#}
+            {#{{ include('artist/index.html.twig') }}#}
+        {#</div>#}
+
+        {#<div class="container" id="index-events">#}
+            {#{% for i in 0..5 %}#}
+            {#<img src="" alt="..." class="img-circle">#}
+            {#{% endfor %}#}
+            {#{{ include('artist/index.html.twig') }}#}
+        {#</div>#}
+
+        {#<div class="container" id="index-addresses">#}
+            {#{% for i in 0..5 %}#}
+            {#<img src="" alt="..." class="img-thumbnail">#}
+            {#{% endfor %}#}
+            {#{{ include('address/index.html.twig') }}#}
+        {#</div>#}
+
+        <div class="container" id="index-users">
+            {{ include('user/highlight.html.twig', {'users': latest_users}) }}
+        </div>
+        <div class="container" id="index-streams">
+            {{ include('stream/index.html.twig', {'streams': latest_streams}) }}
         </div>
     </div>
 {% endblock %}
@@ -51,11 +52,8 @@
 </ul>
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
-
 {% block javascripts %}
+    {{ parent() }}
     {#<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>#}
     {#<script src="{{ asset('js/tags.js') }}"></script>#}
 {% endblock %}

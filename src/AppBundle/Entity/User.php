@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\CreatedAtTrait;
 use AppBundle\Entity\Traits\LikeTrait;
 use AppBundle\Entity\Traits\PhotoTrait;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,6 +15,12 @@ class User extends BaseUser
 {
     use LikeTrait;
     use PhotoTrait;
+    use CreatedAtTrait;
+
+    /**
+     * @var string
+     */
+    protected $locale;
 
     /**
      * @var City
@@ -53,6 +60,26 @@ class User extends BaseUser
         parent::__construct();
         $this->streams = new ArrayCollection();
         $this->photos = new ArrayCollection();
+    }
+
+    /**
+     * @param string $locale
+     *
+     * @return self
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 
     /**

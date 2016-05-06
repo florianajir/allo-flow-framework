@@ -6,3 +6,6 @@ form:
     description: description
   user:
     city: Ma ville
+
+  login:
+    remember_me: Garder la session ouverte
