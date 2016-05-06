@@ -9,16 +9,6 @@ use Doctrine\ORM\EntityManager;
 class TagManager extends BaseManager
 {
     /**
-     * TagManager constructor.
-     *
-     * @param EntityManager $em
-     */
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
-
-    /**
      * @param Tag $tag
      */
     public function create(Tag $tag)
